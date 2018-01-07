@@ -1,7 +1,7 @@
 from tictactoe.model.grid import Grid
 
 
-class Rule(Grid):
+class Rule(object):
 
     def __init__(self, grid, first_person, second_person):
         self.Grid = grid
@@ -21,6 +21,15 @@ class Rule(Grid):
 
         return self._check_horizontal(r, target) or self._check_vertical(c, target) or \
             self._check_diagonal(target)
+
+    def set_players(self, first_person, second_person):
+        if self.Current_Player and self.Next_Player:
+            return
+        self.Current_Player = first_person
+        self.Next_Player = second_person
+
+    def update_grid(self, grid):
+        self.Grid = grid
 
     def _check_horizontal(self, row, target):
         c_max = self.Col
