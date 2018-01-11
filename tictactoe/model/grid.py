@@ -8,10 +8,11 @@ class Grid(object):
         self.m = m
         self.n = n
         self.grid = []
+        self._initialize_value = -1
         self._initialize_grid()
 
     def set_coordinate_value(self, x, y, value):
-        if self._coordinate_check(x, y):
+        if not self._coordinate_check(x, y):
             raise InvalidRangeError
         self.grid[x][y].set_value(value)
 
@@ -28,15 +29,16 @@ class Grid(object):
         for i in xrange(self.m):
             row = []
             for j in xrange(self.n):
-                row.append(space.Space(i, j))
+                row.append(space.Space(i, j, self._initialize_value))
 
             self.grid.append(row)
 
     def _coordinate_check(self, x, y):
-        if self._range_check(x, self.m) and self._range_check(y, self.n):
-            return True
-        else:
+        if not (self._range_check(x, self.m) and self._range_check(y, self.n)):
             return False
+        if self.grid[x][y] != self._initialize_value:
+            return False
+        return True
 
     def _range_check(self, target, target_max, target_min=0):
         if target < target_min and target > target_max:

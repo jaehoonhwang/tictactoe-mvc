@@ -1,4 +1,3 @@
-from tictactoe.model.grid import Grid
+from tictactoe import play
 
-
-a = Grid()
+a = play.tictactoe()

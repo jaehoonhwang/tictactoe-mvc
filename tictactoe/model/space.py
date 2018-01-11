@@ -1,10 +1,10 @@
 
 class Space(object):
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, value=-1):
         self.x = x
         self.y = y
-        self.value = -1
+        self.value = value
 
     def set_coordinates(self, x, y):
         self.x = x

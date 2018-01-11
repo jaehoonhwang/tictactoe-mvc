@@ -1,10 +1,12 @@
-import enum
+from enum import Enum
 
 
 class GameState(Enum):
     Pregame = 1
     Start = 2
     Playing = 3
-    Win = 4
-    Draw = 5
-    End = 6
+    End = 4
+
+class GameCondition(Enum):
+    Win = 1
+    Draw = 2
