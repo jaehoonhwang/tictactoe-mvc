@@ -1,4 +1,4 @@
-from tictactoe.model.board import Board
+from tictactoe.board import Board
 
 def tictactoe():
     a = Board()

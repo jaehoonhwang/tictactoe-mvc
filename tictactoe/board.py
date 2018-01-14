@@ -6,6 +6,8 @@ from tictactoe.model.exceptions import InvalidRangeError
 
 from tictactoe.controller import command_prompt
 
+from tictactoe.view.terminal_interface import View
+
 
 
 class Board(object):
@@ -18,6 +20,7 @@ class Board(object):
         self.current_player = None
         self.players = []
         self.turn = 0
+        self.view = View(self.grid)
 
         self._initialize()
 
@@ -25,6 +28,7 @@ class Board(object):
         self.current_game_state = GameState.Playing
 
         while self.current_game_state == GameState.Playing:
+            self.view.show_board()
             x, y = command_prompt.ask_coordinate()
             current_marker = self.current_player.marker
             try:
@@ -34,9 +38,9 @@ class Board(object):
                 continue
 
             self.turn += 1
-            self.rule.update_grid(grid)
+            self.rule.update_grid(self.grid)
 
-            if not self._check_end_condition():
+            if not self._check_end_condition(x, y):
                 self.current_player = self.players[0] if self.players[1] == self.current_player \
                     else self.players[1]
 
@@ -61,9 +65,9 @@ class Board(object):
         self.current_player = self.players[first_player_index]
         self.current_game_state = GameState.Start
 
-    def _check_end_condition(self):
+    def _check_end_condition(self, x, y):
         is_win = self.rule.check_win_condition((x, y), self.current_player.return_marker())
-        is_draw = True if turn > 7 else False
+        is_draw = True if self.turn > 7 else False
 
         if is_win or is_draw:
             self.current_game_state = GameState.End

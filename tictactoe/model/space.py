@@ -13,5 +13,8 @@ class Space(object):
     def set_value(self, value):
         self.value = value
 
+    def return_value(self):
+        return self.value
+
     def __str__(self):
         return "Space @({0}, {1}) with value: {2}".format(self.x, self.y, self.value)
