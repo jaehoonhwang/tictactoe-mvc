@@ -1,6 +1,5 @@
 from tictactoe.model.grid import Grid
 from tictactoe.model.rule import Rule
-from tictactoe.model.player import Player
 from tictactoe.model.utils import GameState, GameCondition
 from tictactoe.model.exceptions import InvalidRangeError
 
