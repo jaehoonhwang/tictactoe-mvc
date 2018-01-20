@@ -34,4 +34,4 @@ Honestly, if you want to go through the project, this is the recommended route.
     1. Grid is depended on with both `board.py` and `rule.py`
 3. There isn't anything special with `Controller/` or `View/`
 
-Honestly, this progrma is a very simple program.
+Honestly, this is a very simple program.
