@@ -44,6 +44,8 @@ class Board(object):
                 self.current_player = self.players[0] if self.players[1] == self.current_player \
                     else self.players[1]
 
+        self.view.show_board()
+
         if self.current_win_condition == GameCondition.Win:
             self._handle_winner()
         else:
@@ -67,7 +69,7 @@ class Board(object):
 
     def _check_end_condition(self, x, y):
         is_win = self.rule.check_win_condition((x, y), self.current_player.return_marker())
-        is_draw = True if self.turn > 7 else False
+        is_draw = True if self.turn > 8 else False
 
         if is_win or is_draw:
             self.current_game_state = GameState.End
@@ -83,6 +85,7 @@ class Board(object):
 
     def _handle_draw(self):
         draw_prompt = "The game was draw"
+        print draw_prompt
         return
 
     def _handle_marker_error(self):

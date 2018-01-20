@@ -34,7 +34,6 @@ class Grid(object):
             self.grid.append(row)
 
     def _coordinate_check(self, x, y, marker):
-        print x,y, marker
         if not (self._range_check(x, self.m) and self._range_check(y, self.n)):
             return False
         if self.grid[x][y].return_value() == self._initialize_value:
